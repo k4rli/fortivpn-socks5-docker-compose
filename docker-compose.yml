@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  fortiproxy:
+    image: henry42/forticlient-with-proxy
+    container_name: fortiproxy
+    environment:
+      - VPNADDR=${VPNADDR}
+      - VPNUSER=${VPNUSER}
+      - VPNPASS=${VPNPASS}
+    ports:
+      - "11080:1080"
+      - "18123:8123"
+    privileged: true
+    restart: unless-stopped
